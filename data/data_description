@@ -1,44 +1,95 @@
 Dataset Name: Premier League Matches (2010–2020)
 
+
+Files Included:
+- premier_league_sample.csv : sample version of the dataset
+- pic_of_dataset.png        : preview image of the dataset structure
+
+
 Description:
 The Premier League Matches dataset contains detailed statistics for football matches
 played between 2010 and 2020. Each record represents a single match and includes
-performance metrics for both the home and away teams. The dataset captures key
-aspects of gameplay such as passing, possession, shots, fouls, and defensive actions,
+performance metrics for both the home and away teams.
+
+The dataset was obtained from Kaggle and is used in this project for:
+- SQL-based data analysis
+- Python exploratory data analysis (EDA)
+- Feature engineering
+- Machine learning prediction tasks
+
+A sample version of the dataset is included in this repository for demonstration
+and reproducibility purposes.
+
+The dataset captures important aspects of football gameplay such as passing,
+possession, shots, fouls, discipline statistics, and defensive actions,
 providing a comprehensive view of match dynamics.
 
 
 Match Structure:
-Each row corresponds to one match and includes:
+Each row corresponds to one football match and includes:
 - General match information (season, date, teams)
 - Home team statistics
 - Away team statistics
 - Final match outcome
 
 
+Columns Included:
+The dataset contains both numerical and categorical columns such as:
+- season
+- date
+- home_team
+- away_team
+- goal_home_ft
+- goal_away_ft
+- shots
+- shots on target
+- possession
+- passes
+- fouls
+- yellow cards
+- red cards
+- corners
+- offsides
+- tackles
+- clearances
+
+
 Key Features:
-The dataset includes numerical and categorical features such as:
-- Passing and possession metrics
-- Offensive statistics (shots, shots on target, goals)
-- Defensive actions (tackles, clearances)
-- Discipline indicators (fouls, yellow/red cards)
+The dataset includes football-related metrics such as:
+- Passing and possession statistics
+- Offensive performance metrics
+- Defensive actions
+- Discipline indicators
+- Match outcome information
+- Goal statistics
 
 
 Outcome Representation:
-Match results are defined using:
-- goal_home_ft: goals scored by the home team
-- goal_away_ft: goals scored by the away team
-- sg_match_ft: goal difference (home − away)
-- result: final outcome (Home Win, Draw, Away Win)
+Match results are represented using:
+- goal_home_ft : goals scored by the home team
+- goal_away_ft : goals scored by the away team
+- sg_match_ft  : goal difference (home − away)
+- result       : final match outcome
+                 (Home Win, Draw, Away Win)
 
 
 Class Distribution:
-- Home Wins: majority of matches
-- Away Wins: slightly fewer than home wins
-- Draws: least frequent outcome
+The dataset follows a realistic football outcome distribution:
+- Home Wins : majority of matches
+- Away Wins : slightly fewer than home wins
+- Draws     : least frequent outcome
 
 
-Notes:
-The dataset supports a wide range of analytical tasks, including performance analysis,
-trend exploration, and predictive modeling. It is well-suited for SQL-based analytics
-and can be extended to machine learning applications such as match outcome prediction.
+Purpose of the Dataset:
+This dataset supports a wide range of analytical and predictive tasks, including:
+- SQL analytics
+- Team performance analysis
+- Matchup analysis
+- Trend exploration
+- Data visualization
+- Feature engineering
+- Match outcome prediction
+- Over/Under goals prediction
+
+The dataset serves as the foundation for the complete SQL, Python,
+and Machine Learning pipeline developed in this repository.
