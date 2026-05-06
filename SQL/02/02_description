@@ -1,7 +1,3 @@
-=====================================================
-02_team_performance.sql
-=====================================================
-
 Description:
 This SQL script focuses on team-level performance analysis
 using football match data. It transforms raw match results

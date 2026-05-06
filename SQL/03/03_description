@@ -1,7 +1,3 @@
-======================================================
-03_matchup_analysis.sql – DESCRIPTION
-======================================================
-
 Description:
 This SQL script focuses on analyzing team matchups
 (head-to-head games) in the dataset.
