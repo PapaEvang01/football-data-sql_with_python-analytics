@@ -1,0 +1,261 @@
+============================================================
+PART 2 – MACHINE LEARNING
+Football Match Prediction & Predictive Analytics
+============================================================
+
+Description:
+After completing the SQL analytics and Python EDA stages,
+the project moves from descriptive analytics into predictive
+analytics using Machine Learning.
+
+The previous sections transformed raw football match data
+into structured analytical datasets containing:
+- team performance metrics
+- matchup statistics
+- scoring behavior
+- comparative strength indicators
+
+These structured outputs created the foundation for applying
+Machine Learning models capable of identifying statistical
+patterns and generating football match predictions.
+
+The ML phase focuses on head-to-head matches between the
+Big 5 Premier League clubs:
+- Arsenal
+- Manchester City
+- Manchester United
+- Chelsea
+- Liverpool
+
+The objective is to predict:
+1. Match outcomes (W1 / Draw / W2)
+2. Over/Under 2.5 goals
+
+This section demonstrates how structured football analytics
+can evolve into a complete predictive modeling workflow.
+
+
+============================================================
+PROJECT STRUCTURE
+============================================================
+
+The Machine Learning workflow is organized into three main
+Python scripts:
+
+- ML_dataset.py
+- ML_models.py
+- ML_train.py
+
+Together, these scripts create a complete pipeline for:
+- dataset preparation
+- feature engineering
+- model training
+- evaluation
+- probability prediction
+- final result generation
+
+
+------------------------------------------------------------
+1. ML_dataset.py
+------------------------------------------------------------
+
+ML_dataset.py is responsible for building the final
+ML-ready dataset used for training.
+
+The script combines:
+- the original football match dataset
+- SQL-generated team summaries
+- SQL-generated matchup summaries
+
+Using these datasets, the script performs feature
+engineering by creating:
+- team-level features
+- comparative difference metrics
+- matchup-based statistics
+
+Examples include:
+- team win rates
+- average goal difference
+- goals scored
+- matchup intensity
+- matchup dominance
+
+The script also creates two prediction targets:
+- match outcome prediction
+- Over/Under 2.5 goals prediction
+
+The final output is:
+
+data/ml_ready/ml_1_big5_match_outcome_dataset.csv
+
+This dataset becomes the foundation for all Machine Learning
+experiments in the project.
+
+
+------------------------------------------------------------
+2. ML_models.py
+------------------------------------------------------------
+
+ML_models.py defines the Machine Learning models used for
+prediction tasks.
+
+Two classification models are implemented:
+
+1. Logistic Regression
+2. Random Forest Classifier
+
+Logistic Regression is used for match outcome prediction
+because it provides:
+- interpretable results
+- stable baseline performance
+- probability estimation
+
+Random Forest is used for Over/Under prediction because
+it handles:
+- non-linear relationships
+- feature interactions
+- complex football patterns
+
+The models are implemented using Scikit-learn and organized
+through reusable functions, creating a modular and scalable
+training workflow.
+
+
+------------------------------------------------------------
+3. ML_train.py
+------------------------------------------------------------
+
+ML_train.py executes the complete training and evaluation
+pipeline.
+
+The script:
+- loads the ML-ready dataset
+- selects predictive features
+- splits the data into training/testing sets
+- trains the models
+- evaluates performance
+- exports predictions and probabilities
+
+The evaluation process includes:
+- accuracy score
+- classification report
+- confusion matrix
+- prediction probabilities
+
+The script also generates a final combined prediction table
+containing:
+- predicted match outcomes
+- Over/Under predictions
+- probability scores
+- confidence values
+
+
+============================================================
+MACHINE LEARNING RESULTS
+============================================================
+
+
+------------------------------------------------------------
+1. Match Outcome Prediction
+(Logistic Regression)
+------------------------------------------------------------
+
+The Logistic Regression model was trained to predict:
+- W1 → team_1 win
+- D  → draw
+- W2 → team_2 win
+
+Final Accuracy:
+- 40.74%
+
+The model achieved its strongest performance when predicting
+home wins (W1), while draw prediction remained the most
+challenging due to the unpredictable nature of football
+matches.
+
+Despite the difficulty of multiclass sports prediction,
+the model successfully identified meaningful statistical
+patterns related to:
+- team quality
+- goal difference
+- historical performance
+
+
+------------------------------------------------------------
+2. Over/Under 2.5 Goals Prediction
+(Random Forest)
+------------------------------------------------------------
+
+The Random Forest model was trained to classify matches into:
+- Over 2.5 goals
+- Under 2.5 goals
+
+Final Accuracy:
+- 50.00%
+
+The model achieved balanced performance across both classes,
+demonstrating the ability to capture non-linear scoring
+patterns and matchup relationships.
+
+The results highlight the complexity of football scoring
+behavior, where small tactical and statistical differences
+can strongly influence goal production.
+
+
+------------------------------------------------------------
+Prediction Probability Analysis
+------------------------------------------------------------
+
+In addition to final predictions, the models generated
+probability scores for every possible outcome.
+
+This allowed the project to estimate:
+- model confidence
+- prediction uncertainty
+- relative likelihood between outcomes
+
+Instead of producing only a predicted label, the models also
+provide probability-based football analysis, creating a more
+realistic sports analytics workflow.
+
+
+------------------------------------------------------------
+Final Combined Predictions
+------------------------------------------------------------
+
+The final output of the pipeline is:
+
+results/ml/final_combined_predictions.csv
+
+This file combines:
+- match outcome probabilities
+- Over/Under probabilities
+- predicted labels
+- confidence scores
+
+The final CSV provides a compact and interpretable summary
+of the Machine Learning predictions and represents the final
+predictive output of the complete football analytics project.
+
+
+============================================================
+CONCLUSION
+============================================================
+
+The Machine Learning phase transforms the project from
+descriptive football analytics into predictive sports
+analytics.
+
+By combining:
+- SQL analytics
+- Python feature engineering
+- Machine Learning classification
+- probability-based prediction analysis
+
+the project demonstrates a complete end-to-end football
+data science workflow.
+
+The final pipeline shows how structured football data can
+be used not only for analysis and visualization, but also
+for generating interpretable predictive insights using
+Machine Learning techniques.
