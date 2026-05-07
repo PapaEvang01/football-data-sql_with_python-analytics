@@ -1,0 +1,20 @@
+team_1,team_2,target_over_2_5,Over_prob,Under_prob,predicted_result
+Arsenal,Chelsea,Under,0.38,0.62,Under
+Arsenal,Liverpool,Under,0.69,0.31,Over
+Arsenal,Manchester City,Over,0.35,0.65,Under
+Arsenal,Manchester United,Under,0.39,0.61,Under
+Chelsea,Arsenal,Over,0.67,0.33,Over
+Chelsea,Liverpool,Under,0.27,0.73,Under
+Chelsea,Manchester City,Under,0.57,0.43,Over
+Chelsea,Manchester United,Over,0.43,0.57,Under
+Liverpool,Arsenal,Over,0.76,0.24,Over
+Liverpool,Chelsea,Under,0.46,0.54,Under
+Liverpool,Manchester City,Over,0.54,0.46,Over
+Manchester City,Arsenal,Over,0.52,0.48,Over
+Manchester City,Chelsea,Under,0.31,0.69,Under
+Manchester City,Liverpool,Over,0.84,0.16,Over
+Manchester City,Manchester United,Under,0.53,0.47,Over
+Manchester United,Arsenal,Over,0.47,0.53,Under
+Manchester United,Chelsea,Over,0.4,0.6,Under
+Manchester United,Liverpool,Over,0.68,0.32,Over
+Manchester United,Manchester City,Over,0.49,0.51,Under

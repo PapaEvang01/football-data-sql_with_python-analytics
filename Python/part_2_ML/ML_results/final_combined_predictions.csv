@@ -1,0 +1,19 @@
+team_1,team_2,W1_prob,D_prob,W2_prob,predicted_match_result,Under_prob,Over_prob,predicted_over_under,confidence
+Manchester City,Liverpool,0.63,0.12,0.26,W1,0.16,0.84,Over,0.63
+Manchester City,Chelsea,0.58,0.18,0.25,W1,0.69,0.31,Under,0.58
+Manchester City,Arsenal,0.57,0.16,0.28,W1,0.48,0.52,Over,0.57
+Arsenal,Manchester United,0.21,0.49,0.3,D,0.61,0.39,Under,0.49
+Chelsea,Arsenal,0.49,0.34,0.17,W1,0.33,0.67,Over,0.49
+Arsenal,Chelsea,0.33,0.47,0.19,D,0.62,0.38,Under,0.47
+Chelsea,Liverpool,0.26,0.29,0.45,W2,0.73,0.27,Under,0.45
+Manchester United,Chelsea,0.19,0.45,0.36,D,0.6,0.4,Under,0.45
+Chelsea,Manchester United,0.16,0.45,0.4,D,0.57,0.43,Under,0.45
+Manchester United,Manchester City,0.28,0.28,0.44,W2,0.51,0.49,Under,0.44
+Arsenal,Manchester City,0.26,0.33,0.41,W2,0.65,0.35,Under,0.41
+Manchester City,Manchester United,0.38,0.21,0.41,W2,0.47,0.53,Over,0.41
+Chelsea,Manchester City,0.4,0.27,0.33,W1,0.43,0.57,Over,0.4
+Manchester United,Arsenal,0.38,0.37,0.25,W1,0.53,0.47,Under,0.38
+Liverpool,Manchester City,0.38,0.26,0.36,W1,0.46,0.54,Over,0.38
+Arsenal,Liverpool,0.32,0.37,0.31,D,0.31,0.69,Over,0.37
+Liverpool,Arsenal,0.37,0.36,0.27,W1,0.24,0.76,Over,0.37
+Manchester United,Liverpool,0.33,0.31,0.36,W2,0.32,0.68,Over,0.36
