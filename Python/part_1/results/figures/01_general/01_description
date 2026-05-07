@@ -2,8 +2,36 @@
 01 – GENERAL OVERVIEW (04_01.csv)
 ============================================================
 
-The analysis includes:
+This section provides a high-level analytical overview of
+the Premier League dataset using a dashboard-style
+visualization built from the structured SQL summary table.
+
+The analysis focuses on key dataset indicators, including:
 - total matches, teams, and seasons
-- distribution of match results (home wins, away wins, draws)
-- goal statistics (average goals, total goals, scoring ranges)
-- discipline metrics (cards per match)
+- match outcome distribution
+- scoring behavior and goal statistics
+- discipline and card-related metrics
+
+The generated dashboard summarizes the overall structure
+and characteristics of the dataset in a compact and
+interpretable format.
+
+Key insights include:
+- Home wins represent the most frequent match outcome,
+  confirming the presence of home-field advantage.
+
+- The dataset contains more than 11,000 total goals,
+  with an average of approximately 2.7 goals per match,
+  indicating a relatively high-scoring competition.
+
+- Most matches contain fewer than 3 goals, while
+  high-scoring matches remain less frequent.
+
+- Discipline analysis shows that yellow cards occur
+  consistently across matches, whereas red cards are
+  comparatively rare events.
+
+Overall, this section establishes the analytical context
+for the project and provides an initial understanding of
+the dataset before moving to team-level and matchup-level
+analysis.
