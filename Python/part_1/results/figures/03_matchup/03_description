@@ -2,109 +2,106 @@
 03 – BIG 5 MATCHUP ANALYSIS (04_03.csv)
 ============================================================
 
-Description:
-This section focuses on head-to-head matchups between the
-top Premier League teams: Arsenal, Manchester City,
-Manchester United, Chelsea, and Liverpool.
+This section focuses on head-to-head analysis between the
+top Premier League clubs:
+- Arsenal
+- Manchester City
+- Manchester United
+- Chelsea
+- Liverpool
 
-The goal is to analyze how these teams perform against each
-other in terms of scoring, competitiveness, and match
-intensity.
+The goal is to examine how elite teams perform directly
+against each other in terms of:
+- scoring behavior
+- competitiveness
+- physical intensity
+- overall matchup dynamics
 
-Unlike previous sections that analyze teams individually,
-this section highlights direct interactions between elite
-teams, providing insights into rivalry dynamics and match
-behavior.
+Unlike the previous section, which analyzed teams
+individually, this stage focuses on direct rivalries and
+pairwise interactions between top clubs.
 
-
-------------------------------------------------------------
-Diagrams & Analysis
-------------------------------------------------------------
-
-
-1. Big 5 Matchups - Average Goals (big5_avg_goals.png)
-
-Description:
-This chart ranks matchups based on the average number of
-goals scored.
-
-Comment:
-Arsenal vs Liverpool stands out as the highest scoring
-matchup, followed by Liverpool vs Manchester City. These
-games tend to be open and attacking, indicating strong
-offensive play from both sides.
+The analysis combines ranking charts, dominance metrics,
+and heatmap visualizations to provide a deeper understanding
+of elite football match behavior.
 
 
 ------------------------------------------------------------
+Included Visualizations
+------------------------------------------------------------
 
-
-2. Big 5 Matchups - Intensity Score (big5_intensity_score.png)
-
-Description:
-Measures match intensity using fouls, yellow cards, and
-red cards.
-
-Comment:
-Chelsea vs Manchester United and Arsenal vs Manchester United
-appear as the most intense matchups, suggesting more physical
-and competitive games. These fixtures tend to involve more
-aggressive play.
+- Big 5 Matchups – Average Goals
+- Big 5 Matchups – Intensity Score
+- Big 5 Matchups – Win Dominance
+- Big 5 Matchup Performance Heatmap
 
 
 ------------------------------------------------------------
+Key Analytical Insights
+------------------------------------------------------------
 
+The analysis reveals several important patterns regarding
+elite Premier League rivalries:
 
-3. Big 5 Matchups - Win Dominance (big5_dominance.png)
+- Matchups such as Arsenal vs Liverpool and Liverpool vs
+  Manchester City produce the highest average number of
+  goals, indicating highly offensive and open gameplay.
 
-Description:
-Shows the difference in win rates between the two teams in
-each matchup.
+- Certain fixtures, particularly Chelsea vs Manchester
+  United and Arsenal vs Manchester United, demonstrate
+  increased physical intensity through higher numbers of
+  fouls and cards.
 
-Comment:
-Arsenal vs Manchester City shows the highest dominance,
-indicating a clear advantage for one side. On the other hand,
-Liverpool vs Manchester City appears highly balanced, with
-almost equal performance between the teams.
+- Some rivalries remain highly balanced, with nearly equal
+  win rates between teams, while others show clear
+  long-term dominance by one side.
+
+- Heatmap analysis highlights differences in playing style
+  across matchups:
+  - some games emphasize attacking football
+  - others involve more defensive or physical gameplay
+
+- Offensive metrics such as shots and corners strongly
+  correlate with high-scoring matchups, reflecting more
+  aggressive attacking strategies.
 
 
 ------------------------------------------------------------
+Analytical Value
+------------------------------------------------------------
 
+This section extends the analysis beyond individual team
+performance by focusing on direct interactions between
+top clubs.
 
-4. Big 5 Matchup Performance Overview (big5_matchup_heatmap.png)
+The generated visualizations help identify:
+- rivalry intensity
+- offensive tendencies
+- matchup balance
+- dominant teams
+- physical match behavior
 
-Description:
-Heatmap comparing key performance metrics for each matchup,
-including:
-- average goals
-- fouls
-- shots
-- corners
-
-Comment:
-This visualization provides a complete view of each matchup’s
-playing style. For example, Arsenal vs Liverpool combines high
-scoring with high attacking activity (shots and corners),
-while Chelsea vs Manchester United shows high intensity with
-increased fouls.
-
-It allows quick comparison between matchups in terms of both
-offensive behavior and physicality.
+These insights are especially useful for:
+- sports analytics
+- matchup evaluation
+- tactical interpretation
+- predictive football analysis
 
 
 ------------------------------------------------------------
 Summary
 ------------------------------------------------------------
 
-This section highlights how top teams interact with each
-other, revealing patterns in scoring, competitiveness, and
-match intensity.
+Overall, this section provides a focused analysis of
+high-level Premier League rivalries and reveals how elite
+teams interact under competitive conditions.
 
-It shows that:
-- some matchups are consistently high-scoring and attacking
+The results show that:
+- some matchups are consistently high-scoring
 - others are more physical and defensive
-- certain rivalries are balanced, while others are clearly
-  dominated by one team
+- several rivalries remain highly competitive across seasons
 
-These insights provide a deeper understanding of elite-level
-football dynamics and complement the team-level analysis
-from the previous section.
+By combining scoring analysis, dominance evaluation,
+intensity metrics, and heatmap visualization, this section
+adds a deeper relational layer to the overall football
+analytics workflow.
