@@ -1,0 +1,161 @@
+============================================================
+MACHINE LEARNING RESULTS
+============================================================
+
+Description:
+This section presents the final results obtained from the
+Machine Learning models trained on Big 5 Premier League
+matchups.
+
+Two prediction tasks were evaluated:
+
+1. Match Outcome Prediction
+   (W1 / Draw / W2)
+
+2. Over/Under 2.5 Goals Prediction
+
+The models were trained using engineered football features
+based on:
+- team performance statistics
+- comparative team strength
+- historical matchup behavior
+- scoring and intensity metrics
+
+
+------------------------------------------------------------
+1. Match Outcome Prediction
+(Logistic Regression)
+------------------------------------------------------------
+
+The Logistic Regression model was used to predict:
+- W1 → team_1 win
+- D  → draw
+- W2 → team_2 win
+
+Final Accuracy:
+- 40.74%
+
+Classification analysis shows that the model performs best
+when predicting home wins (W1), achieving the strongest
+precision and overall consistency.
+
+Draw prediction remains the most difficult task due to the
+high variability and unpredictability of football matches.
+
+Away win predictions (W2) achieve moderate recall, showing
+that the model can identify several successful away-match
+scenarios but still struggles with consistency.
+
+Overall, the model captures meaningful football patterns
+despite the difficulty of multiclass sports prediction.
+
+
+------------------------------------------------------------
+2. Over/Under 2.5 Goals Prediction
+(Random Forest)
+------------------------------------------------------------
+
+The Random Forest model was used to classify matches into:
+- Over 2.5 goals
+- Under 2.5 goals
+
+Final Accuracy:
+- 50.00%
+
+The model achieved balanced performance across both classes,
+with similar precision and recall values for:
+- Under
+- Over
+
+The evaluation suggests that scoring behavior is highly
+competitive and difficult to predict consistently using
+limited historical football data.
+
+Compared to the Logistic Regression model, the Random Forest
+classifier handled non-linear relationships between matchup
+features more effectively.
+
+
+------------------------------------------------------------
+Prediction Probability Analysis
+------------------------------------------------------------
+
+In addition to final predictions, the models generated
+probability scores for every possible outcome.
+
+This allowed the project to estimate:
+- model confidence
+- prediction uncertainty
+- relative likelihood between outcomes
+
+The final prediction tables include:
+- predicted class
+- class probabilities
+- confidence score
+
+This creates a more realistic sports analytics workflow,
+moving beyond simple label prediction into probability-based
+football analysis.
+
+
+------------------------------------------------------------
+Final Combined Predictions
+------------------------------------------------------------
+
+The final output of the pipeline is:
+- final_combined_predictions.csv
+
+This table combines the outputs of both Machine Learning
+models into a single structured prediction file.
+
+For each matchup, the file contains:
+- predicted match outcome
+- predicted Over/Under result
+- probability scores for every class
+- overall confidence score
+
+Included columns:
+- team_1
+- team_2
+- W1_prob
+- D_prob
+- W2_prob
+- predicted_match_result
+- Under_prob
+- Over_prob
+- predicted_over_under
+- confidence
+
+The confidence score is calculated using the highest
+predicted match-outcome probability and provides a simple
+indicator of model certainty.
+
+The final CSV creates a compact and interpretable summary
+of the Machine Learning predictions, making the results
+easy to analyze, compare, and visualize.
+
+
+------------------------------------------------------------
+Conclusion
+------------------------------------------------------------
+
+The Machine Learning results demonstrate that engineered
+football features can capture useful predictive information
+related to:
+- team strength
+- scoring behavior
+- matchup competitiveness
+- historical rivalry patterns
+
+Although football prediction remains a highly challenging
+problem due to randomness and match variability, the models
+successfully identify statistical trends and generate
+interpretable probability-based predictions.
+
+The final workflow combines:
+- feature engineering
+- Machine Learning classification
+- evaluation metrics
+- prediction probability analysis
+
+into a complete football prediction pipeline.
