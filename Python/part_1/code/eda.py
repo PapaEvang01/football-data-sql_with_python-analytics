@@ -1,3 +1,26 @@
+# ============================================================
+# Football Data Analytics - Exploratory Data Analysis (EDA)
+# ============================================================
+#
+# Description:
+# This script performs Exploratory Data Analysis (EDA)
+# using the analytical CSV outputs generated from the
+# SQL section of the project.
+#
+# The goal is to transform structured football analytics
+# data into visual insights using Python libraries such
+# as pandas, matplotlib, and seaborn.
+#
+# The analysis focuses on:
+# - General dataset statistics
+# - Team performance analysis
+# - Matchup and rivalry analysis
+#
+# Generated visualizations are automatically saved into
+# categorized result folders for easier organization
+# and interpretation.
+# ============================================================
+
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -19,10 +42,13 @@ GENERAL_DIR = "results/figures/01_general"
 TEAM_DIR = "results/figures/02_team_perf"
 MATCHUP_DIR = "results/figures/03_matchup"
 
-
 # ============================================================
 # GENERAL FUNCTIONS
 # ============================================================
+# Utility functions used throughout the EDA workflow
+# for folder creation, CSV loading, dataset inspection,
+# and chart formatting.
+
 def create_output_folders():
     """Create structured output folders."""
     os.makedirs(GENERAL_DIR, exist_ok=True)
@@ -34,15 +60,18 @@ def load_csv(file_path, name):
     """Load a CSV file and return a DataFrame."""
     try:
         df = pd.read_csv(file_path)
+
         print(f"[OK] {name} loaded successfully.")
+
         return df
+
     except Exception as e:
         print(f"[ERROR] Failed to load {name}: {e}")
         return None
 
 
 def print_basic_info(df, name):
-    """Print basic information about a DataFrame."""
+    """Display basic dataset information."""
     if df is None:
         print(f"[WARNING] {name} is None.")
         return
@@ -64,13 +93,18 @@ def print_basic_info(df, name):
 
 
 def format_label(value):
-    """Format chart labels with integers or two decimal places."""
+    """Format chart labels for cleaner visualization."""
     return f"{int(value)}" if float(value).is_integer() else f"{value:.2f}"
-
 
 # ============================================================
 # 04_01.csv - OVERALL DATASET ANALYSIS
 # ============================================================
+# This section visualizes general dataset statistics
+# generated from the SQL analytics workflow.
+#
+# The goal is to create a compact dashboard-style
+# overview of the dataset using key numerical metrics.
+
 def analyze_overall(overall_df):
     """Create a dashboard-style chart for overall dataset metrics."""
 
@@ -82,18 +116,26 @@ def analyze_overall(overall_df):
     print("OVERALL DATASET ANALYSIS")
     print("=" * 60)
 
+    # Create a safe copy of the dataset
     df = overall_df.copy()
+
+    # Convert values to numeric format when possible
     df["value"] = pd.to_numeric(df["value"], errors="coerce")
+
+    # Keep only valid numerical rows for visualization
     numeric_df = df.dropna().copy()
 
     print("\nNumeric Metrics Used for Plot:")
     print(numeric_df)
 
+    # Create horizontal bar chart
     plt.figure(figsize=(10, 6))
     bars = plt.barh(numeric_df["metric"], numeric_df["value"])
 
+    # Add value labels next to each bar
     for bar in bars:
         width = bar.get_width()
+
         plt.text(
             width,
             bar.get_y() + bar.get_height() / 2,
@@ -101,29 +143,48 @@ def analyze_overall(overall_df):
             va="center"
         )
 
+    # Chart formatting
     plt.title("Dataset Overview")
     plt.xlabel("Value")
     plt.ylabel("Metric")
     plt.tight_layout()
 
+    # Save figure
     plt.savefig(os.path.join(GENERAL_DIR, "overall_dashboard.png"))
-    plt.show()
 
+    # Display figure
+    plt.show()
 
 # ============================================================
 # 04_02.csv - TEAM PERFORMANCE ANALYSIS
 # ============================================================
-def plot_top_teams(team_df, column, title, filename):
-    """Create a horizontal bar chart for top 10 teams by a selected metric."""
+# This section analyzes team-level performance using the
+# final team summary table generated from SQL.
+#
+# The visualizations focus on:
+# - strongest teams by wins and win rate
+# - attacking and defensive profiles
+# - home vs away performance
+# - relationships between key performance metrics
 
+
+def plot_top_teams(team_df, column, title, filename):
+    """Create a horizontal bar chart for the top 10 teams by a selected metric."""
+
+    # Select the top 10 teams based on the chosen metric
     top = team_df.sort_values(by=column, ascending=False).head(10)
 
+    # Create horizontal bar chart
     plt.figure(figsize=(10, 6))
     bars = plt.barh(top["team"], top[column])
+
+    # Display the strongest team at the top of the chart
     plt.gca().invert_yaxis()
 
+    # Add value labels next to each bar
     for bar in bars:
         width = bar.get_width()
+
         plt.text(
             width,
             bar.get_y() + bar.get_height() / 2,
@@ -131,23 +192,28 @@ def plot_top_teams(team_df, column, title, filename):
             va="center"
         )
 
+    # Chart formatting
     plt.title(title)
     plt.xlabel(column)
     plt.tight_layout()
 
+    # Save and display figure
     plt.savefig(os.path.join(TEAM_DIR, filename))
     plt.show()
 
 
 def plot_home_vs_away_win_rate(team_df):
-    """Compare home and away win rates for the top teams by win rate."""
+    """Compare home and away win rates for the top teams by overall win rate."""
 
+    # Select the top 10 teams based on overall win rate
     top_teams = team_df.sort_values(by="win_rate_pct", ascending=False).head(10)
 
     plt.figure(figsize=(10, 6))
 
+    # X-axis positions for grouped bars
     x = range(len(top_teams))
 
+    # Plot home win rate
     plt.bar(
         x,
         top_teams["home_win_rate_pct"],
@@ -156,6 +222,7 @@ def plot_home_vs_away_win_rate(team_df):
         align="center"
     )
 
+    # Plot away win rate next to home win rate
     plt.bar(
         [i + 0.4 for i in x],
         top_teams["away_win_rate_pct"],
@@ -163,6 +230,7 @@ def plot_home_vs_away_win_rate(team_df):
         label="Away Win %"
     )
 
+    # Add team names as x-axis labels
     plt.xticks(
         [i + 0.2 for i in x],
         top_teams["team"],
@@ -170,25 +238,29 @@ def plot_home_vs_away_win_rate(team_df):
         ha="right"
     )
 
+    # Chart formatting
     plt.title("Home vs Away Win Rate (Top Teams)")
     plt.ylabel("Win Rate (%)")
     plt.legend()
     plt.tight_layout()
 
+    # Save and display figure
     plt.savefig(os.path.join(TEAM_DIR, "home_vs_away_win_rate.png"))
     plt.show()
 
 
 def plot_attacking_vs_defensive(team_df):
-    """Scatter plot: attacking power vs defensive performance."""
+    """Create a scatter plot comparing attacking and defensive team profiles."""
 
     plt.figure(figsize=(10, 6))
 
+    # Each point represents one team
     plt.scatter(
         team_df["avg_goals_scored"],
         team_df["avg_goals_conceded"]
     )
 
+    # Add team labels next to each point
     for _, row in team_df.iterrows():
         plt.text(
             row["avg_goals_scored"] + 0.01,
@@ -197,25 +269,29 @@ def plot_attacking_vs_defensive(team_df):
             fontsize=8
         )
 
+    # Chart formatting
     plt.title("Attacking vs Defensive Team Profile")
     plt.xlabel("Average Goals Scored")
     plt.ylabel("Average Goals Conceded")
     plt.tight_layout()
 
+    # Save and display figure
     plt.savefig(os.path.join(TEAM_DIR, "teams_attack_vs_defense_scatter.png"))
     plt.show()
 
 
 def plot_winrate_vs_goaldiff(team_df):
-    """Scatter plot: win rate vs average goal difference."""
+    """Create a scatter plot comparing win rate and average goal difference."""
 
     plt.figure(figsize=(10, 6))
 
+    # Each point represents one team
     plt.scatter(
         team_df["avg_goal_difference"],
         team_df["win_rate_pct"]
     )
 
+    # Add team labels next to each point
     for _, row in team_df.iterrows():
         plt.text(
             row["avg_goal_difference"] + 0.02,
@@ -224,18 +300,21 @@ def plot_winrate_vs_goaldiff(team_df):
             fontsize=8
         )
 
+    # Chart formatting
     plt.title("Win Rate vs Goal Difference")
     plt.xlabel("Average Goal Difference")
     plt.ylabel("Win Rate (%)")
     plt.tight_layout()
 
+    # Save and display figure
     plt.savefig(os.path.join(TEAM_DIR, "winrate_vs_goaldiff.png"))
     plt.show()
 
 
 def plot_team_correlation_heatmap(team_df):
-    """Correlation heatmap for key team performance metrics."""
+    """Create a correlation heatmap for key team performance metrics."""
 
+    # Select numerical performance metrics
     columns = [
         "total_wins",
         "win_rate_pct",
@@ -244,21 +323,26 @@ def plot_team_correlation_heatmap(team_df):
         "avg_goal_difference"
     ]
 
+    # Compute correlation matrix
     corr_df = team_df[columns].corr()
 
+    # Create heatmap
     plt.figure(figsize=(8, 6))
     sns.heatmap(corr_df, annot=True, cmap="coolwarm", fmt=".2f")
 
+    # Chart formatting
     plt.title("Correlation Heatmap of Team Performance Metrics")
     plt.tight_layout()
 
+    # Save and display figure
     plt.savefig(os.path.join(TEAM_DIR, "team_correlation_heatmap.png"))
     plt.show()
 
 
 def plot_home_away_heatmap(team_df):
-    """Correlation heatmap for home vs away performance metrics."""
+    """Create a correlation heatmap for home and away performance metrics."""
 
+    # Select home and away result-rate metrics
     columns = [
         "home_win_rate_pct",
         "home_draw_rate_pct",
@@ -268,20 +352,24 @@ def plot_home_away_heatmap(team_df):
         "away_loss_rate_pct"
     ]
 
+    # Compute correlation matrix
     corr_df = team_df[columns].corr()
 
+    # Create heatmap
     plt.figure(figsize=(8, 6))
     sns.heatmap(corr_df, annot=True, cmap="coolwarm", fmt=".2f")
 
+    # Chart formatting
     plt.title("Home vs Away Performance Correlation")
     plt.tight_layout()
 
+    # Save and display figure
     plt.savefig(os.path.join(TEAM_DIR, "home_away_correlation.png"))
     plt.show()
 
 
 def analyze_teams(team_df):
-    """Analyze team performance with ranking charts, scatter plots, and heatmaps."""
+    """Run all team performance visualizations."""
 
     if team_df is None:
         print("[WARNING] Team Summary is missing.")
@@ -291,6 +379,7 @@ def analyze_teams(team_df):
     print("TEAM ANALYSIS")
     print("=" * 60)
 
+    # Ranking charts
     plot_top_teams(
         team_df,
         "total_wins",
@@ -319,16 +408,28 @@ def analyze_teams(team_df):
         "teams_goal_diff.png"
     )
 
+    # Comparison and relationship charts
     plot_home_vs_away_win_rate(team_df)
     plot_attacking_vs_defensive(team_df)
     plot_winrate_vs_goaldiff(team_df)
+
+    # Correlation heatmaps
     plot_team_correlation_heatmap(team_df)
     plot_home_away_heatmap(team_df)
-
 
 # ============================================================
 # 04_03_matchup_summary.csv - BIG 5 MATCHUP ANALYSIS
 # ============================================================
+# This section analyzes head-to-head matchups between
+# selected Big 5 Premier League clubs.
+#
+# The analysis focuses on:
+# - average goals per matchup
+# - match intensity based on fouls and cards
+# - overall matchup performance metrics
+# - win-rate dominance between teams
+
+
 def analyze_matchups(matchup_df):
     """Analyze matchups only between selected Big 5 clubs."""
 
@@ -340,6 +441,7 @@ def analyze_matchups(matchup_df):
     print("BIG 5 MATCHUP ANALYSIS")
     print("=" * 60)
 
+    # Define the selected Big 5 clubs used for matchup analysis
     big_teams = [
         "Arsenal",
         "Manchester City",
@@ -348,33 +450,42 @@ def analyze_matchups(matchup_df):
         "Liverpool"
     ]
 
-    # Keep only matchups where BOTH teams are in the Big 5 list
+    # Keep only matchups where both teams belong to the Big 5 list
     df_big = matchup_df[
         matchup_df["team_1"].isin(big_teams) &
         matchup_df["team_2"].isin(big_teams)
     ].copy()
 
+    # Create a readable matchup label for charts
     df_big["matchup"] = df_big["team_1"] + " vs " + df_big["team_2"]
 
     print(f"\nTotal Big 5 Matchups Analyzed: {len(df_big)}")
     print(df_big[["matchup", "total_matches", "avg_goals", "avg_fouls", "avg_shots", "avg_corners"]])
 
+    # Generate all Big 5 matchup visualizations
     plot_big5_goals(df_big)
     plot_big5_intensity(df_big)
     plot_big5_heatmap(df_big)
     plot_big5_dominance(df_big)
 
+
 def plot_big5_goals(df_big):
     """Plot average goals for Big 5 matchups."""
 
+    # Sort matchups by average goals scored
     top = df_big.sort_values(by="avg_goals", ascending=False)
 
+    # Create horizontal bar chart
     plt.figure(figsize=(10, 6))
     bars = plt.barh(top["matchup"], top["avg_goals"])
+
+    # Display the highest-scoring matchup at the top
     plt.gca().invert_yaxis()
 
+    # Add value labels next to each bar
     for bar in bars:
         width = bar.get_width()
+
         plt.text(
             width,
             bar.get_y() + bar.get_height() / 2,
@@ -382,10 +493,12 @@ def plot_big5_goals(df_big):
             va="center"
         )
 
+    # Chart formatting
     plt.title("Big 5 Matchups - Average Goals")
     plt.xlabel("Average Goals")
     plt.tight_layout()
 
+    # Save and display figure
     plt.savefig(os.path.join(MATCHUP_DIR, "big5_avg_goals.png"))
     plt.show()
 
@@ -393,22 +506,32 @@ def plot_big5_goals(df_big):
 def plot_big5_intensity(df_big):
     """Plot intensity score for Big 5 matchups."""
 
+    # Work on a copy to avoid modifying the original DataFrame
     df_big = df_big.copy()
 
+    # Create a simple custom intensity score.
+    # Red cards are weighted more heavily because they have
+    # a stronger impact on match dynamics.
     df_big["intensity_score"] = (
         df_big["avg_fouls"]
         + df_big["avg_yellow_cards"]
         + df_big["avg_red_cards"] * 2
     )
 
+    # Sort matchups by intensity score
     top = df_big.sort_values(by="intensity_score", ascending=False)
 
+    # Create horizontal bar chart
     plt.figure(figsize=(10, 6))
     bars = plt.barh(top["matchup"], top["intensity_score"])
+
+    # Display the most intense matchup at the top
     plt.gca().invert_yaxis()
 
+    # Add value labels next to each bar
     for bar in bars:
         width = bar.get_width()
+
         plt.text(
             width,
             bar.get_y() + bar.get_height() / 2,
@@ -416,10 +539,12 @@ def plot_big5_intensity(df_big):
             va="center"
         )
 
+    # Chart formatting
     plt.title("Big 5 Matchups - Intensity Score")
     plt.xlabel("Intensity Score")
     plt.tight_layout()
 
+    # Save and display figure
     plt.savefig(os.path.join(MATCHUP_DIR, "big5_intensity_score.png"))
     plt.show()
 
@@ -427,6 +552,7 @@ def plot_big5_intensity(df_big):
 def plot_big5_heatmap(df_big):
     """Create a heatmap for Big 5 matchup metrics."""
 
+    # Select matchup metrics for comparison
     columns = [
         "avg_goals",
         "avg_fouls",
@@ -434,8 +560,10 @@ def plot_big5_heatmap(df_big):
         "avg_corners"
     ]
 
+    # Use matchup names as heatmap rows
     heatmap_data = df_big.set_index("matchup")[columns]
 
+    # Create heatmap
     plt.figure(figsize=(10, 6))
     sns.heatmap(
         heatmap_data,
@@ -444,27 +572,37 @@ def plot_big5_heatmap(df_big):
         fmt=".2f"
     )
 
+    # Chart formatting
     plt.title("Big 5 Matchup Performance Overview")
     plt.tight_layout()
 
+    # Save and display figure
     plt.savefig(os.path.join(MATCHUP_DIR, "big5_matchup_heatmap.png"))
     plt.show()
 
-def plot_big5_dominance(df_big):
-    """Show how dominant teams are in big matchups."""
 
+def plot_big5_dominance(df_big):
+    """Show win-rate dominance differences in Big 5 matchups."""
+
+    # Work on a copy to preserve the original DataFrame
     df = df_big.copy()
 
+    # Calculate absolute difference between team win rates
     df["dominance"] = abs(
         df["team_1_win_rate_pct"] - df["team_2_win_rate_pct"]
     )
 
+    # Create horizontal bar chart
     plt.figure(figsize=(10, 6))
     bars = plt.barh(df["matchup"], df["dominance"])
+
+    # Display the largest dominance difference at the top
     plt.gca().invert_yaxis()
 
+    # Add value labels next to each bar
     for bar in bars:
         width = bar.get_width()
+
         plt.text(
             width,
             bar.get_y() + bar.get_height() / 2,
@@ -472,27 +610,44 @@ def plot_big5_dominance(df_big):
             va="center"
         )
 
+    # Chart formatting
     plt.title("Big 5 Matchups - Win Dominance")
     plt.xlabel("Win Rate Difference (%)")
     plt.tight_layout()
 
+    # Save and display figure
     plt.savefig(os.path.join(MATCHUP_DIR, "big5_dominance.png"))
     plt.show()
-
+    
 # ============================================================
 # MAIN
 # ============================================================
+# Main execution pipeline.
+#
+# The script follows this order:
+# 1. Create output folders
+# 2. Load SQL-generated CSV files
+# 3. Print basic dataset information
+# 4. Generate all EDA visualizations
+
+
 def main():
+    """Run the complete Python EDA workflow."""
+
+    # Create folders for saving figures
     create_output_folders()
 
+    # Load analytical CSV outputs generated from SQL
     overall_df = load_csv(OVERALL_PATH, "Overall Summary")
     team_df = load_csv(TEAM_PATH, "Team Summary")
     matchup_df = load_csv(MATCHUP_PATH, "Matchup Summary")
 
+    # Inspect loaded datasets
     print_basic_info(overall_df, "Overall Summary")
     print_basic_info(team_df, "Team Summary")
     print_basic_info(matchup_df, "Matchup Summary")
 
+    # Run analysis and generate visualizations
     analyze_overall(overall_df)
     analyze_teams(team_df)
     analyze_matchups(matchup_df)
