@@ -1,0 +1,219 @@
+============================================================
+MACHINE LEARNING CODE DESCRIPTION
+Big 5 Football Match Prediction
+============================================================
+
+Description:
+This folder contains the Machine Learning code used to build,
+train, evaluate, and export football prediction models.
+
+The code is organized into three main Python scripts:
+
+- ML_dataset.py
+- ML_models.py
+- ML_train.py
+
+Together, these scripts create a complete Machine Learning
+workflow starting from structured CSV data and ending with
+model evaluation files and final prediction outputs.
+
+
+------------------------------------------------------------
+1. ML_dataset.py
+------------------------------------------------------------
+
+ML_dataset.py builds the training dataset used by the models.
+
+The script loads:
+- football_matches.csv
+- 04_02.csv
+- 04_03_matchup_summary.csv
+
+It then filters the data to keep only matches between the
+selected Big 5 Premier League teams:
+- Arsenal
+- Manchester City
+- Manchester United
+- Chelsea
+- Liverpool
+
+After filtering, the script creates two target columns:
+
+target_result:
+- W1 = team_1 wins
+- D  = draw
+- W2 = team_2 wins
+
+target_over_2_5:
+- Over = total goals greater than 2.5
+- Under = total goals less than or equal to 2.5
+
+The script also adds engineered features from the SQL summary
+tables.
+
+Team features:
+- team_1_win_rate_pct
+- team_2_win_rate_pct
+- team_1_avg_goal_difference
+- team_2_avg_goal_difference
+- team_1_avg_goals_scored
+- team_2_avg_goals_scored
+
+Difference features:
+- diff_win_rate
+- diff_goal_diff
+- diff_goals_scored
+
+Matchup features:
+- matchup_avg_goals
+- matchup_intensity_score
+- matchup_dominance
+
+Finally, the script saves the ML-ready dataset as:
+
+data/ml_ready/ml_1_big5_match_outcome_dataset.csv
+
+This CSV is the final training dataset used by ML_train.py.
+
+
+------------------------------------------------------------
+2. ML_models.py
+------------------------------------------------------------
+
+ML_models.py defines the classification models used in the
+project.
+
+The script contains two model-building functions:
+
+build_logistic_regression()
+Creates a Scikit-learn Pipeline with:
+- StandardScaler
+- LogisticRegression
+
+The scaler standardizes numerical features before training.
+Logistic Regression is used for match outcome prediction
+because it is simple, interpretable, and suitable as a strong
+baseline model.
+
+build_random_forest()
+Creates a RandomForestClassifier with:
+- 200 estimators
+- maximum depth of 5
+- balanced class weights
+- controlled split and leaf sizes
+
+Random Forest is used for the Over/Under prediction task
+because it can capture non-linear relationships between team
+and matchup features.
+
+The function get_models() returns both models in a dictionary:
+
+- logistic_regression
+- random_forest
+
+This makes the training script cleaner and easier to extend
+with more models later.
+
+
+------------------------------------------------------------
+3. ML_train.py
+------------------------------------------------------------
+
+ML_train.py runs the full training and evaluation pipeline.
+
+The script loads:
+
+data/ml_ready/ml_1_big5_match_outcome_dataset.csv
+
+It uses the following feature columns:
+
+- team_1_win_rate_pct
+- team_2_win_rate_pct
+- team_1_avg_goal_difference
+- team_2_avg_goal_difference
+- team_1_avg_goals_scored
+- team_2_avg_goals_scored
+- diff_win_rate
+- diff_goal_diff
+- diff_goals_scored
+- matchup_avg_goals
+- matchup_intensity_score
+- matchup_dominance
+
+The script defines two tasks:
+
+logistic_regression:
+- target column: target_result
+- task: match outcome prediction
+
+random_forest:
+- target column: target_over_2_5
+- task: Over/Under 2.5 goals prediction
+
+For each task, the script:
+1. removes rows with missing values
+2. separates features and target
+3. splits the data into training and testing sets
+4. trains the selected model
+5. evaluates the model
+6. saves the results
+7. exports prediction probabilities
+
+The evaluation outputs include:
+- accuracy.txt
+- classification_report.txt
+- confusion_matrix.csv
+- prediction_probabilities.csv
+
+At the end, the script combines the outputs from both models
+into one final prediction table:
+
+results/ml_1/final_combined_predictions.csv
+
+
+------------------------------------------------------------
+Final Output
+------------------------------------------------------------
+
+The final combined CSV contains:
+
+- team_1
+- team_2
+- W1_prob
+- D_prob
+- W2_prob
+- predicted_match_result
+- Under_prob
+- Over_prob
+- predicted_over_under
+- confidence
+
+This output gives both:
+- the predicted match result
+- the predicted goal category
+- the model confidence
+
+The final table is useful because it presents the model results
+in a compact and readable format, suitable for GitHub,
+portfolio review, and further football analytics work.
+
+
+------------------------------------------------------------
+Summary
+------------------------------------------------------------
+
+This Machine Learning code section shows how structured
+football data can be transformed into a prediction pipeline.
+
+The code covers:
+- dataset preparation
+- feature engineering
+- target creation
+- model definition
+- model training
+- evaluation
+- probability prediction
+- final result export
+
+It is designed to be simple, readable, and easy to extend with
+additional models, features, or prediction tasks.
