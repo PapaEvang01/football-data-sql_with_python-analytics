@@ -1,0 +1,142 @@
+============================================================
+RESULTS & ANALYTICAL INSIGHTS
+Python Exploratory Data Analysis (EDA)
+============================================================
+
+Description:
+This section presents the main analytical insights obtained
+through the Python Exploratory Data Analysis (EDA) phase of
+the project.
+
+Using the structured datasets generated from the SQL module,
+the analysis transforms aggregated football statistics into
+visual and interpretable insights through charts, scatter
+plots, and heatmaps.
+
+The objective is not only to visualize the dataset, but also
+to identify meaningful patterns related to:
+- team performance
+- scoring behavior
+- competitive balance
+- home advantage
+- rivalry dynamics
+- offensive and defensive efficiency
+
+
+------------------------------------------------------------
+General Dataset Analysis
+------------------------------------------------------------
+
+The general overview confirms several important characteristics
+of the Premier League dataset.
+
+The league demonstrates a relatively high-scoring profile,
+with more than 11,000 total goals and an average close to
+2.7 goals per match. Most matches contain fewer than three
+goals, while high-scoring games remain less common.
+
+The analysis also confirms the existence of a clear
+home-field advantage, as home wins occur significantly more
+frequently than away wins.
+
+Discipline-related metrics reveal that yellow cards are
+consistently present across matches, while red cards remain
+rare events, reflecting realistic football match behavior.
+
+
+------------------------------------------------------------
+Team Performance Analysis
+------------------------------------------------------------
+
+Team-level analysis highlights strong differences in
+performance between clubs.
+
+Teams such as Manchester City, Liverpool, Manchester United,
+and Chelsea consistently dominate across most metrics,
+including:
+- total wins
+- win rate
+- average goals scored
+- goal difference
+
+Manchester City stands out as the strongest overall team,
+combining:
+- high attacking production
+- strong defensive performance
+- exceptional win efficiency
+
+Scatter plot analysis demonstrates a clear relationship
+between offensive strength, defensive stability, and overall
+success. Teams that score more goals while conceding fewer
+consistently achieve higher win rates and stronger goal
+differences.
+
+Correlation heatmaps further confirm that:
+- goal difference strongly correlates with win rate
+- successful teams tend to maintain balanced attacking and
+  defensive profiles
+- strong teams perform consistently both home and away
+
+The analysis also reinforces the importance of home advantage,
+with most clubs showing noticeably better performance in
+home matches compared to away fixtures.
+
+
+------------------------------------------------------------
+Big 5 Matchup Analysis
+------------------------------------------------------------
+
+The matchup analysis focuses on direct rivalries between
+elite Premier League clubs:
+- Arsenal
+- Manchester City
+- Manchester United
+- Chelsea
+- Liverpool
+
+The results reveal that different rivalries exhibit distinct
+playing styles and competitive characteristics.
+
+Some matchups, such as Arsenal vs Liverpool and Liverpool vs
+Manchester City, consistently produce high-scoring games,
+reflecting open and attacking football.
+
+Other rivalries display increased physical intensity,
+characterized by higher numbers of fouls and disciplinary
+actions.
+
+Dominance analysis also shows that while certain matchups
+remain highly balanced across seasons, others demonstrate
+clear long-term superiority by one team.
+
+Heatmap visualizations provide a broader understanding of
+match behavior by comparing goals, shots, fouls, and corners
+across different rivalries.
+
+
+------------------------------------------------------------
+Overall Conclusion
+------------------------------------------------------------
+
+The Python EDA phase successfully transforms structured SQL
+outputs into meaningful football analytics insights.
+
+The analysis demonstrates how visualization techniques can
+be used to:
+- understand team behavior
+- identify competitive patterns
+- evaluate offensive and defensive efficiency
+- analyze rivalry dynamics
+- support deeper statistical exploration
+
+Overall, the results establish a complete analytical
+workflow that combines:
+- SQL-based data preparation
+- Python visualization
+- statistical interpretation
+- structured sports analytics
+
+These insights also create a strong foundation for the next
+stage of the project, where the structured datasets can be
+extended into Machine Learning and predictive modeling
+applications.
