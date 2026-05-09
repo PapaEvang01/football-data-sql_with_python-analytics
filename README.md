@@ -98,7 +98,7 @@ football-data-sql_with_python-analytics/
 
 ---
 
-# Part 1 – SQL Analytics
+# Part – SQL Analytics
 
 The SQL phase focused on transforming raw football match data into structured analytical summaries.
 
@@ -276,6 +276,3 @@ Possible future extensions include:
 
 Electrical & Computer Engineering Graduate  
 Specialization: AI & Machine Learning
-
-GitHub:  
-https://github.com/PapaEvang01
