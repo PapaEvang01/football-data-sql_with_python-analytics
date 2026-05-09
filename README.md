@@ -77,7 +77,7 @@ football-data-sql_with_python-analytics/
 │
 ├── data/
 │
-├── part_1_SQL/
+├── part_SQL/
 │   ├── code/
 │   ├── results/
 │   └── descriptions/
