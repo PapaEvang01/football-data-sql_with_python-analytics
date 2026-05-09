@@ -1,141 +1,281 @@
-# ⚽ Football Data SQL Analytics Project
+# football-data-sql_with_python-analytics
 
-## 📌 Overview
-This project focuses on analyzing football match data using SQL.  
-The goal is to transform raw match records into structured insights and reusable datasets that can support further analysis, visualization, and forecasting in Python.
+## Football Data Analytics & Match Prediction Pipeline
 
-The dataset includes multiple seasons of matches with detailed information such as teams, goals, results, and match statistics.
+This project explores Premier League football data using a complete analytics workflow that combines:
 
----
+- SQL analytics
+- Python exploratory data analysis (EDA)
+- Machine Learning prediction
 
-## 🎯 Project Objectives
-- Explore and understand the dataset structure  
-- Analyze team performance across seasons  
-- Study head-to-head (matchup) relationships  
-- Build clean summary tables for analytics  
-- Prepare CSV outputs for Python (Pandas, visualization, ML)
+The goal of the project was to understand how football match statistics can be transformed from raw data into structured analytics and predictive sports models.
 
 ---
 
-## 🔍 Section Breakdown
+# Project Motivation
 
-### **01 – Basic Dataset Analysis**
-**File:** `01_basic_queries.sql`  
+The project initially started as an SQL analytics exercise focused on exploring football match statistics and understanding team performance patterns.
 
-Focus:
-- Dataset overview and structure  
+Using SQL, raw football data was transformed into structured analytical summaries related to:
+- team performance
+- match outcomes
+- goals and scoring behavior
+- historical rivalries and matchups
 
-Includes:
-- Total matches, teams, seasons  
-- Average matches per season  
-- First and last match dates  
-- High-scoring matches  
-- Goalless matches  
-- Goal distribution  
+After the analytical phase, Python was used for:
+- visualization
+- exploratory data analysis
+- correlation analysis
+- statistical pattern exploration
 
-👉 Builds a complete understanding of the dataset before deeper analysis.
+Finally, the project evolved into a Machine Learning pipeline where engineered football features were used to predict:
+- match outcomes
+- Over/Under 2.5 goals
 
----
+The workflow follows this structure:
 
-### **02 – Team Performance Analysis**
-**File:** `02_team_performance.sql`  
-
-Focus:
-- Team-level performance metrics  
-
-Includes:
-- Matches played  
-- Wins, draws, losses  
-- Goals scored and conceded  
-- Goal difference  
-- Average goals per match  
-- Home vs away performance  
-
-👉 Transforms match data into meaningful team statistics.
+```text
+Raw Football Data
+        ↓
+SQL Analytics
+        ↓
+Python EDA & Visualization
+        ↓
+Feature Engineering
+        ↓
+Machine Learning Prediction
+```
 
 ---
 
-### **03 – Matchup Analysis**
-**File:** `03_matchup_analysis.sql`  
+# Dataset
 
-Focus:
-- Head-to-head team relationships  
+### Dataset:
+Premier League Matches (2010–2020)
 
-Includes:
-- Most and least frequent matchups  
-- Win/draw/loss patterns between teams  
-- Total and average goals per matchup  
-- Goal differences  
+### Source:
+Kaggle
 
-👉 Provides insights into rivalries and team interactions.
+The dataset contains:
+- match results
+- goals scored
+- possession statistics
+- shots and shots on target
+- fouls and cards
+- passing statistics
+- defensive actions
+- home/away team information
 
----
-
-### **04 – Final Summary Tables**
-**Folder:** `04/`  
-
-Focus:
-- Preparing structured datasets for further analysis  
-
-Subsections:
-- `04_01` → Overall dataset summary  
-- `04_02` → Team performance summary  
-- `04_03` → Matchup summary  
-- `04_main_description` → Explanation of final outputs  
-
-👉 These tables are exported as CSV and used for:
-- Python data analysis  
-- Visualization  
-- Forecasting  
+Each row represents one football match.
 
 ---
 
-### **Data Folder**
-Contains:
-- Dataset description  
-- Sample dataset image  
+# Project Structure
 
-👉 Helps understand the structure and content of the raw data.
-
----
-
-## 🧠 SQL Concepts Used
-- SELECT, WHERE  
-- COUNT, SUM, AVG, MAX  
-- ROUND  
-- CASE WHEN  
-- GROUP BY, ORDER BY  
-- UNION ALL  
-- Subqueries  
-
-👉 Focus on clean, readable, and practical SQL.
-
----
-
-## 🔄 Workflow
-1. Load dataset into SQLite  
-2. Run basic analysis (01)  
-3. Analyze team performance (02)  
-4. Analyze matchups (03)  
-5. Build summary tables (04)  
-6. Export results to CSV  
-7. Use in Python for analytics and forecasting  
+```text
+football-data-sql_with_python-analytics/
+│
+├── data/
+│
+├── part_1_SQL/
+│   ├── code/
+│   ├── results/
+│   └── descriptions/
+│
+├── part_1_python_EDA/
+│   ├── code/
+│   ├── results/
+│   └── descriptions/
+│
+├── part_2_ML/
+│   ├── code/
+│   ├── data/
+│   ├── results/
+│   └── descriptions/
+│
+└── README.md
+```
 
 ---
 
-## 📊 Future Work
-- Data visualization (Matplotlib / Seaborn / Power BI)  
-- Predictive models (match results, goals)  
-- Machine learning integration  
-- Real-time data extensions  
+# Part 1 – SQL Analytics
+
+The SQL phase focused on transforming raw football match data into structured analytical summaries.
+
+The analysis included:
+- dataset overview
+- team performance analysis
+- matchup analysis
+- scoring behavior
+- home vs away performance
+- rivalry statistics
+
+Key SQL techniques used:
+- GROUP BY
+- CASE WHEN
+- UNION ALL
+- aggregate functions
+- filtering and ranking
+
+The final SQL outputs were exported as CSV files and later used in Python and Machine Learning.
 
 ---
 
-## 🚀 Key Takeaway
-This project demonstrates how SQL can be used to:
-- Explore real-world datasets  
-- Build structured analytical views  
-- Prepare clean data pipelines for data science  
+# Part 1 – Python EDA & Visualization
 
-It serves as a strong foundation for combining:
-**SQL + Python + Machine Learning in Sports Analytics**
+Python was used to visualize and analyze the structured SQL outputs.
+
+### Libraries:
+- Pandas
+- Matplotlib
+- Seaborn
+
+The EDA phase included:
+- ranking charts
+- scatter plots
+- heatmaps
+- matchup analysis
+- correlation analysis
+- attacking vs defensive comparisons
+
+The analysis revealed patterns related to:
+- team consistency
+- goal production
+- home advantage
+- rivalry intensity
+- relationships between football metrics
+
+---
+
+# Part 2 – Machine Learning
+
+The final phase of the project focused on predictive football analytics.
+
+Using engineered football features, Machine Learning models were trained to predict:
+- match outcomes (W1 / Draw / W2)
+- Over/Under 2.5 goals
+
+### Implemented Models:
+- Logistic Regression
+- Random Forest Classifier
+
+### Engineered Features:
+- team win rates
+- average goals scored
+- goal difference
+- comparative strength metrics
+- matchup intensity
+- historical rivalry statistics
+
+---
+
+# Machine Learning Results
+
+## Match Outcome Prediction
+### Model:
+Logistic Regression
+
+### Final Accuracy:
+- 40.74%
+
+The model performed best when predicting home wins and captured useful patterns related to:
+- team strength
+- goal difference
+- historical performance
+
+---
+
+## Over/Under 2.5 Goals Prediction
+### Model:
+Random Forest
+
+### Final Accuracy:
+- 50.00%
+
+The model achieved balanced performance across both classes and handled non-linear relationships between football features effectively.
+
+---
+
+# Final Prediction Output
+
+The final Machine Learning pipeline generates:
+
+```text
+final_combined_predictions.csv
+```
+
+This file combines:
+- predicted match outcomes
+- Over/Under predictions
+- probability scores
+- confidence metrics
+
+### Included Columns:
+- team_1
+- team_2
+- W1_prob
+- D_prob
+- W2_prob
+- predicted_match_result
+- Under_prob
+- Over_prob
+- predicted_over_under
+- confidence
+
+The final output provides a compact probability-based summary of football match predictions.
+
+---
+
+# Technologies Used
+
+- SQL
+- Python
+- Pandas
+- Matplotlib
+- Seaborn
+- Scikit-learn
+
+---
+
+# Key Takeaways
+
+This project demonstrates how football data can be transformed from:
+- raw match records
+
+into:
+- structured analytics
+- visual insights
+- predictive Machine Learning models
+
+The workflow combines:
+- SQL analytics
+- Python data analysis
+- feature engineering
+- classification modeling
+- probability-based prediction analysis
+
+into a complete football analytics pipeline.
+
+---
+
+# Future Improvements
+
+Possible future extensions include:
+- larger football datasets
+- advanced ML models (XGBoost, Neural Networks)
+- expected goals (xG) features
+- player-level analytics
+- deep learning approaches
+- time-series football analysis
+
+---
+
+# Author
+
+## Evangelos Papaioannou
+
+Electrical & Computer Engineering Graduate  
+Specialization: AI & Machine Learning
+
+GitHub:  
+https://github.com/PapaEvang01
